@@ -15,7 +15,7 @@
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.11.0",
     "html-webpack-plugin": "^3.2.0",
-    "rust-native-wasm-loader": "https://github.com/atkinchris/rust-native-wasm-loader.git#release",
+    "rust-native-wasm-loader": "^0.7.0",
     "wasm-dce": "^1.0.2",
     "wasm-loader": "^1.3.0",
     "webpack": "^4.6.0",

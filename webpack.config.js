@@ -16,16 +16,12 @@ const config = {
     rules: [{
       test: /\.rs$/,
       use: [{
-        loader: 'babel-loader',
-      }, {
         loader: 'wasm-loader',
       }, {
         loader: 'rust-native-wasm-loader',
         options: {
+          gc: true,
           release: true,
-          wasmBindgen: {
-            ignoreVersion: true,
-          },
         },
       }],
     }],

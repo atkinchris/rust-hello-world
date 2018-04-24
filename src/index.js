@@ -1,3 +1,6 @@
-import wasm from './lib.rs'
+import loadWasm from './lib.rs'
 
-wasm().then(a => console.log(a))
+loadWasm().then((result) => {
+  const addOne = result.instance.exports.add_one
+  console.log('Return value was ', addOne(3))
+})
