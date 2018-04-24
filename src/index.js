@@ -1,5 +1,3 @@
-const wasm = import('../lib/rust_game.js')
+import wasm from './lib.rs'
 
-wasm.then((js) => {
-  js.greet('World!')
-})
+wasm().then(a => console.log(a))

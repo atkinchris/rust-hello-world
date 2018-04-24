@@ -12,6 +12,24 @@ const config = {
     path: paths.DEST,
     filename: '[name].[hash:8].js',
   },
+  module: {
+    rules: [{
+      test: /\.rs$/,
+      use: [{
+        loader: 'babel-loader',
+      }, {
+        loader: 'wasm-loader',
+      }, {
+        loader: 'rust-native-wasm-loader',
+        options: {
+          release: true,
+          wasmBindgen: {
+            ignoreVersion: true,
+          },
+        },
+      }],
+    }],
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(paths.SRC, 'index.html'),
