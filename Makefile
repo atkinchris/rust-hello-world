@@ -1,11 +1,20 @@
+serve:
+	make release
+	yarn start
+
 run:
-	cargo +nightly run
+	cargo run
 
 build:
-	cargo +nightly build
+	cargo build --target wasm32-unknown-unknown
 
 release:
-	cargo +nightly build --release
+	mkdir -p lib
+	cargo build --release --target wasm32-unknown-unknown
+	wasm-bindgen target/wasm32-unknown-unknown/debug/rust_game.wasm --out-dir lib
 
 bootstrap:
+	rustup default nightly
+	rustup target add wasm32-unknown-unknown
 	rustup component add rls-preview rust-analysis rust-src
+	cargo install wasm-bindgen-cli

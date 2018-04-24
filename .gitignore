@@ -1,3 +1,6 @@
+lib
+node_modules
+yarn.lock
 
 /target
 **/*.rs.bk
