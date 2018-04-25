@@ -14,14 +14,19 @@ const config = {
   },
   module: {
     rules: [{
+      test: /\.js$/,
+      use: 'babel-loader',
+    }, {
       test: /\.rs$/,
       use: [{
-        loader: 'wasm-loader',
+        loader: 'babel-loader',
       }, {
         loader: 'rust-native-wasm-loader',
         options: {
-          gc: true,
           release: true,
+          wasmBindgen: {
+            wasm2es6js: true,
+          },
         },
       }],
     }],
@@ -36,6 +41,7 @@ const config = {
     inline: true,
     stats: 'errors-only',
   },
+  stats: 'errors-only',
 }
 
 module.exports = config

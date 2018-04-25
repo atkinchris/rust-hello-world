@@ -1,6 +1,5 @@
-import loadWasm from './lib.rs'
+import { hello_world, wasmBooted } from './lib.rs'
 
-loadWasm().then((result) => {
-  const addOne = result.instance.exports.add_one
-  console.log('Return value was ', addOne(3))
-})
+wasmBooted
+  .then(() => console.log(hello_world('chris')))
+  .catch(console.error)

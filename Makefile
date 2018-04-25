@@ -1,5 +1,19 @@
+default:
+	make build
+	yarn build
+
+start:
+	make build
+	yarn start
+
 build:
-	cargo build --target wasm32-unknown-unknown
+	cargo build --release --target wasm32-unknown-unknown
+
+release:
+	cargo build --release --target wasm32-unknown-unknown
+	wasm-bindgen target/wasm32-unknown-unknown/release/engine.wasm --out-dir target
+	wasm2es6js --base64 -o target/engine_bg.js target/engine_bg.wasm
+	rm target/*.wasm
 
 bootstrap:
 	rustup toolchain install nightly
