@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 const paths = {
   SRC: path.resolve(__dirname, 'src'),
@@ -32,6 +33,7 @@ const config = {
     }],
   },
   plugins: [
+    new CleanWebpackPlugin([paths.DEST]),
     new HtmlWebpackPlugin({
       template: path.join(paths.SRC, 'index.html'),
     }),
