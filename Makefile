@@ -1,5 +1,6 @@
 default:
 	make build
+	yarn
 	yarn build
 
 start:
