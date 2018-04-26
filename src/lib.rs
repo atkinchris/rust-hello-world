@@ -6,7 +6,7 @@ use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
 pub struct World {
-    entities: Vec<u32>,
+    entities: Vec<String>,
 }
 
 #[wasm_bindgen]
@@ -18,11 +18,17 @@ impl World {
         }
     }
 
-    pub fn insert(&mut self, item: u32) {
+    pub fn insert(&mut self, item: String) {
         self.entities.push(item)
     }
 
-    pub fn list(&mut self) -> Vec<u32> {
-        self.entities.clone()
+    pub fn list(&mut self) -> Vec<JsValue> {
+        let mut items = Vec::<&str>::new();
+
+        for item in &self.entities {
+            items.push(item);
+        }
+
+        items
     }
 }

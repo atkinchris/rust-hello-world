@@ -10,6 +10,9 @@ start:
 build:
 	cargo build --release --target wasm32-unknown-unknown
 
+watch:
+	cargo watch -x 'build --target wasm32-unknown-unknown'
+
 build-lib:
 	mkdir -p lib
 	cargo build --release --target wasm32-unknown-unknown
