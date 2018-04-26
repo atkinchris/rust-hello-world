@@ -23,12 +23,9 @@ impl World {
     }
 
     pub fn list(&mut self) -> Vec<JsValue> {
-        let mut items = Vec::<&str>::new();
-
-        for item in &self.entities {
-            items.push(item);
-        }
-
-        items
+        self.entities
+            .iter()
+            .map(|i| JsValue::from(i.as_str()))
+            .collect()
     }
 }
