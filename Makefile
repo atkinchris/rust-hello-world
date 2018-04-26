@@ -10,11 +10,12 @@ start:
 build:
 	cargo build --release --target wasm32-unknown-unknown
 
-release:
+build-lib:
+	mkdir -p lib
 	cargo build --release --target wasm32-unknown-unknown
-	wasm-bindgen target/wasm32-unknown-unknown/release/engine.wasm --out-dir target
-	wasm2es6js --base64 -o target/engine_bg.js target/engine_bg.wasm
-	rm target/*.wasm
+	wasm-bindgen target/wasm32-unknown-unknown/release/engine.wasm --out-dir lib
+	wasm2es6js --base64 -o lib/engine_bg.js lib/engine_bg.wasm
+	rm lib/*.wasm
 
 bootstrap:
 	rustup toolchain install nightly

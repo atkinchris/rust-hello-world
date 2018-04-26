@@ -5,25 +5,24 @@ extern crate wasm_bindgen;
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
-pub extern fn hello_world(mut first_name: &str, mut last_name: &str) -> String {
-    // This is fairly silly code but it is just an example...
-    if first_name.is_empty() {
-        first_name = "John";
-    }
-    if last_name.is_empty() {
-        last_name = "Doe";
-    }
-    format!("Hello, {} {}!", first_name, last_name)
+pub struct World {
+    entities: Vec<u32>,
 }
 
 #[wasm_bindgen]
-pub fn get_array() -> Vec<JsValue> {
-    vec![
-        JsValue::from(1),
-        JsValue::from(2),
-        JsValue::from(3),
-        JsValue::from(4),
-        JsValue::from(5),
-        JsValue::from_str("Chris"),
-    ]
+impl World {
+    #[wasm_bindgen(constructor)]
+    pub fn new() -> World {
+        World {
+            entities: Vec::new()
+        }
+    }
+
+    pub fn insert(&mut self, item: u32) {
+        self.entities.push(item)
+    }
+
+    pub fn list(&mut self) -> Vec<u32> {
+        self.entities.clone()
+    }
 }
