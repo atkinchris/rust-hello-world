@@ -1,5 +1,13 @@
 import { hello_world, wasmBooted } from './lib.rs'
 
+const output = document.getElementById('output')
+
+const print = () => {
+  const message = hello_world('Chris', 'A')
+
+  output.innerText = message
+}
+
 wasmBooted
-  .then(() => console.log(hello_world('chris')))
+  .then(print)
   .catch(console.error)
